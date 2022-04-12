@@ -1,22 +1,15 @@
 package br.com.souza.empresa.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="funcionarios")
@@ -24,7 +17,7 @@ public class Funcionario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id; 
 	private String nome;
 	private String cpf;
 	private Double salario;
@@ -36,12 +29,9 @@ public class Funcionario {
 	@JoinColumn(name = "cargo_id", nullable = false)
 	private Cargo cargo;
 	
-	@Fetch(FetchMode.SELECT)
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "funcionarios_unidades", joinColumns = {
-			@JoinColumn(name = "fk_funcionario") }, 
-	inverseJoinColumns = { @JoinColumn(name = "fk_unidade") })
-	private List<UnidadeTrabalho> unidadeTrabalhos;
+	@ManyToOne
+	@JoinColumn(name = "unidade_trabalho_id")
+	private UnidadeTrabalho unidadeTrabalho;
 	
 	public Funcionario() {
 		
@@ -83,12 +73,23 @@ public class Funcionario {
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
-	public List<UnidadeTrabalho> getUnidadeTrabalhos() {
-		return unidadeTrabalhos;
+	
+	public UnidadeTrabalho getUnidadeTrabalho() {
+		return unidadeTrabalho;
 	}
-	public void setUnidadeTrabalhos(List<UnidadeTrabalho> unidadeTrabalhos) {
-		this.unidadeTrabalhos = unidadeTrabalhos;
+
+	public void setUnidadeTrabalho(UnidadeTrabalho unidadeTrabalho) {
+		this.unidadeTrabalho = unidadeTrabalho;
 	}
+
+	@Override
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario
+				+ ", dataContratacao=" + dataContratacao + ", cargo=" + cargo + ", unidadeTrabalho=" + unidadeTrabalho
+				+ "]";
+	}
+	
+	
 	
 	
 }

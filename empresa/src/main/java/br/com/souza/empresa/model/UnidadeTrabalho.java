@@ -3,11 +3,10 @@ package br.com.souza.empresa.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,41 +14,39 @@ import javax.persistence.Table;
 public class UnidadeTrabalho {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String descricao;
-    private String endereco;
-    @ManyToMany(mappedBy = "unidadeTrabalhos", fetch = FetchType.EAGER)
+    private Long id;
+    private String nome;
+    
+    @OneToMany(mappedBy = "unidadeTrabalho")
     private List<Funcionario> funcionarios;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public String getNome() {
+		return nome;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getEndereco() {
-        return endereco;
-    }
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
 
-    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
+	
 
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
-    }
+	
+    
+    
 }

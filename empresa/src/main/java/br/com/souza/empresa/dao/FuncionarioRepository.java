@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.souza.empresa.model.Funcionario;
 
 @Repository
-public interface FuncionarioDAO extends JpaRepository<Funcionario, Long> {
+public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 
 }

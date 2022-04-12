@@ -23,8 +23,50 @@ body{
 	color: #47bcff;
 }
 
-.small-text{
-	font-size: 15px;
+html {
+    height: 100%;
+   	min-height: 100%;
+}
+   		 
+body {
+   	 display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
+footer {
+   	 margin-top: auto;
+ 	 background-color:#47bcff ;
+}
+    	
+.text-footer{
+    letter-spacing: 7px;
+    text-decoration: none;
+    color: black;
+ }
+    	
+.text-footer-nome{
+    color: black;
+    letter-spacing: 7px;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    transition: all .5s;
+}
+    	
+.text-footer-nome:hover{
+ 	color:white;
+    letter-spacing: 7px;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    		
+}
 
+.btn-dark{
+	transition: all, 0.5s;
+	cursor: pointer;
+}
+
+.btn-dark:hover{
+	background-color: black;
+	
+}

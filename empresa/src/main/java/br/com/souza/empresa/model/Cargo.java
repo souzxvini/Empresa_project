@@ -17,6 +17,7 @@ public class Cargo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	private String area;
 	
 	@OneToMany(mappedBy = "cargo")
 	private List<Funcionario> funcionario;
@@ -45,6 +46,14 @@ public class Cargo {
 		this.id = id;
 	}
 	
-	
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 	
 }
