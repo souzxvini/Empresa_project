@@ -47,7 +47,7 @@
       						<td th:text="${unidade.id}"></td>
       						<td th:text="${unidade.nome}"></td>
       						<td th:text="${unidade.endereco}"></td>
-      						<td><a class="btn btn-primary">EDITAR</a></td>
+      						<td><a class="btn btn-primary" th:href="@{/unidadeTrabalho/atualizarUnidadeTrabalho/{id}(id=${unidade.id})}">EDITAR</a></td>
       						<td><a class="btn btn-danger" th:href="@{/unidadeTrabalho/excluirUnidadeTrabalho/{id}(id=${unidade.id})}">EXCLUIR</a></td>
     					</tr>
   					</tbody>
