@@ -1,6 +1,7 @@
 package br.com.souza.empresa.model;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,10 +21,10 @@ public class Funcionario {
 	private Long id; 
 	private String nome;
 	private String cpf;
-	private Double salario;
+	private BigDecimal salario;
 	
 	@Column(name="data_contratacao")
-	private LocalDate dataContratacao;
+	private Date dataContratacao;
 	
 	@ManyToOne
 	@JoinColumn(name = "cargo_id", nullable = false)
@@ -55,16 +56,16 @@ public class Funcionario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public Double getSalario() {
+	public BigDecimal getSalario() {
 		return salario;
 	}
-	public void setSalario(Double salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
-	public LocalDate getDataContratacao() {
+	public Date getDataContratacao() {
 		return dataContratacao;
 	}
-	public void setDataContratacao(LocalDate dataContratacao) {
+	public void setDataContratacao(Date dataContratacao) {
 		this.dataContratacao = dataContratacao;
 	}
 	public Cargo getCargo() {

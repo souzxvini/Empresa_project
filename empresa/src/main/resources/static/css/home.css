@@ -70,3 +70,34 @@ footer {
 	background-color: black;
 	
 }
+
+.btn-success{
+	transition: all, 0.5s;
+	cursor: pointer;
+}
+
+.btn-success:hover{
+	background-color: #228B22;
+	
+}
+
+.btn-danger{
+	transition: all, 0.5s;
+	cursor: pointer;
+}
+
+.btn-danger:hover{
+	background-color: red;
+	
+}
+
+.btn-primary{
+	transition: all, 0.5s;
+	cursor: pointer;
+}
+
+.btn-primary:hover{
+	background-color: blue;
+}
+
+

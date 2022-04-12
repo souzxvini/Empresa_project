@@ -33,12 +33,19 @@
 			
 			<div th:replace="~{base :: titulo('ADICIONAR UNIDADE DE TRABALHO')}"></div>
 			
-			<div class="card">
-				<form th:object="${requisicaoNovaUnidadeTrabalho}" class="card-body" action="/unidadeTrabalho/novaUnidadeTrabalho" method="post">
+			<div class="card" style="width:60%; margin:auto;">
+				<form th:object="${requisicaoNovaUnidadeTrabalho}" class="card-body"  action="/unidadeTrabalho/novaUnidadeTrabalho" method="post">
 				<div class="form-group">
 					<label for="nome">Unidade de Trabalho:</label>
 					<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da unidade"/>
 					<div class="invalid-feedback" th:errors="*{nome}">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="endereco">Endereço:</label>
+					<input th:field="*{endereco}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da unidade"/>
+					<div class="invalid-feedback" th:errors="*{endereco}">
 					</div>
 				</div>
 					<div class="row mt-2">

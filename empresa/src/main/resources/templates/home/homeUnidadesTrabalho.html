@@ -38,13 +38,15 @@
   					<thead>
    					 	<tr>
      						<th scope="col">ID</th>
-      					 	<th scope="col">CARGO</th>
+      					 	<th scope="col">UNIDADE</th>
+      					 	<th scope="col">ENDERECO</th>
     					</tr>
   					</thead>
   					<tbody>
     					<tr th:each="unidade : ${unidades}">
       						<td th:text="${unidade.id}"></td>
       						<td th:text="${unidade.nome}"></td>
+      						<td th:text="${unidade.endereco}"></td>
       						<td><a class="btn btn-primary">EDITAR</a></td>
       						<td><a class="btn btn-danger" th:href="@{/unidadeTrabalho/excluirUnidadeTrabalho/{id}(id=${unidade.id})}">EXCLUIR</a></td>
     					</tr>

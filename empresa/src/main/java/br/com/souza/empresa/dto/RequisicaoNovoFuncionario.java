@@ -1,6 +1,10 @@
 package br.com.souza.empresa.dto;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import br.com.souza.empresa.model.Cargo;
 import br.com.souza.empresa.model.Funcionario;
@@ -14,13 +18,16 @@ public class RequisicaoNovoFuncionario {
 	@NotBlank
 	private String cpf;
 	
-	@NotBlank
-	private Double salario;
+	@NotNull
+	private BigDecimal salario;
 	
-	@NotBlank
+	@NotNull
+	private Date dataContratacao;
+	
+	@NotNull
 	private Cargo cargo;
 	
-	@NotBlank
+	@NotNull
 	private UnidadeTrabalho unidadeTrabalho;
 
 	public String getNome() {
@@ -39,11 +46,11 @@ public class RequisicaoNovoFuncionario {
 		this.cpf = cpf;
 	}
 
-	public Double getSalario() {
+	public BigDecimal getSalario() {
 		return salario;
 	}
 
-	public void setSalario(Double salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
 
@@ -62,6 +69,14 @@ public class RequisicaoNovoFuncionario {
 	public void setUnidadeTrabalho(UnidadeTrabalho unidadeTrabalho) {
 		this.unidadeTrabalho = unidadeTrabalho;
 	}
+	
+	public Date getDataContratacao() {
+		return dataContratacao;
+	}
+
+	public void setDataContratacao(Date dataContratacao) {
+		this.dataContratacao = dataContratacao;
+	}
 
 	public Funcionario toFuncionario() {
 		
@@ -71,6 +86,7 @@ public class RequisicaoNovoFuncionario {
 		funcionario.setSalario(salario);
 		funcionario.setCargo(cargo);
 		funcionario.setUnidadeTrabalho(unidadeTrabalho);
+		funcionario.setDataContratacao(dataContratacao);
 		
 		return funcionario;
 	}

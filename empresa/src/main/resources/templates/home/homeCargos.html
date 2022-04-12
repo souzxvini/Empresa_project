@@ -48,7 +48,7 @@
       						<td th:text="${cargo.id}"></td>
       						<td th:text="${cargo.nome}"></td>
       						<td th:text="${cargo.area}"></td>
-      						<td><a class="btn btn-primary">EDITAR</a></td>
+      						<td><a class="btn btn-primary"th:href="@{/cargo/atualizarCargo/{id}(id=${cargo.id})}">EDITAR</a></td>
       						<td><a class="btn btn-danger" th:href="@{/cargo/excluirCargo/{id}(id=${cargo.id})}" >EXCLUIR</a></td>
     					</tr>
     					

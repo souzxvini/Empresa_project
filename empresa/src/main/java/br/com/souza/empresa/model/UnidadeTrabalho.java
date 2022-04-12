@@ -16,6 +16,7 @@ public class UnidadeTrabalho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String endereco;
     
     @OneToMany(mappedBy = "unidadeTrabalho")
     private List<Funcionario> funcionarios;
@@ -44,9 +45,11 @@ public class UnidadeTrabalho {
 		this.funcionarios = funcionarios;
 	}
 
-	
+	public String getEndereco() {
+		return endereco;
+	}
 
-	
-    
-    
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 }
