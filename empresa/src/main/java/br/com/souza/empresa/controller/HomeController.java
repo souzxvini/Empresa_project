@@ -36,7 +36,9 @@ public class HomeController {
 		
 		List<Funcionario> funcionarios = funcionarioRepository.findAll();
 		 model.addAttribute("funcionarios", funcionarios);
-		 
+		 if(funcionarios.isEmpty() || funcionarios.size() == 0) {
+				return "funcionario/homeVaziaFuncionario";
+			}
 		 return "/home/homeFuncionarios";
 	}
 	

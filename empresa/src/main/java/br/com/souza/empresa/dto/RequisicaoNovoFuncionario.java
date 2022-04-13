@@ -15,6 +15,10 @@ public class RequisicaoNovoFuncionario {
 	private CargoRepository cargoRepository;
 	private FuncionarioRepository funcionarioRepository;
 	private UnidadeTrabalhoRepository unidadeTrabalhoRepository;
+	
+	@NotBlank
+	private String Id;
+	
 	@NotBlank
 	private String nome;
 	
@@ -26,6 +30,7 @@ public class RequisicaoNovoFuncionario {
 	
 		@NotNull
 	private Long cargoId;
+	
 		
 	
 	@NotNull
@@ -72,6 +77,15 @@ public class RequisicaoNovoFuncionario {
 	}
 
 	
+	
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String id) {
+		Id = id;
+	}
+
 	public Funcionario toFuncionario() {
 		
 		Funcionario funcionario = new Funcionario();

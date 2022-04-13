@@ -51,10 +51,10 @@
       						<td th:text="${funcionario.id}"></td>
       						<td th:text="${funcionario.nome}"></td>
       						<td th:text="${funcionario.cpf}"></td>
-      						<td th:text="${funcionario.salario}"></td>
+      						<td th:if="${funcionario.salario} != null" th:text="${'R$' + #numbers.formatDecimal(funcionario.salario, 3, 'POINT', 2, 'COMMA')}"></td>
       						<td th:text="${funcionario.cargo.nome}"></td>
       						<td th:text="${funcionario.unidadeTrabalho.nome}"></td>
-      						<td><a class="btn btn-primary" href="">EDITAR</a></td>
+      						<td><a class="btn btn-primary" th:href="@{/funcionario/atualizarFuncionario/{id}(id=${funcionario.id})}">EDITAR</a></td>
       						<td><a class="btn btn-danger" th:href="@{/funcionario/excluirFuncionario/{id}(id=${funcionario.id})}">EXCLUIR</a></td>
     					</tr>
   					</tbody>

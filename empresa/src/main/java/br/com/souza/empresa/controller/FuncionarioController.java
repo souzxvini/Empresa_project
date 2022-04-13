@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,8 +33,10 @@ public class FuncionarioController {
 	@Autowired
 	private UnidadeTrabalhoRepository unidadeTrabalhoRepository;
 
-	@GetMapping("excluirFuncionario/{id}")
-	public String excluirFuncionario(Funcionario funcionario ) {
+	@GetMapping("excluirFuncionario/{id}") 
+	public String excluirFuncionario(Funcionario funcionario, BindingResult result) {
+		
+		
 		
 			funcionarioRepository.deleteById(funcionario.getId());
 		
@@ -49,7 +53,7 @@ public class FuncionarioController {
 	}
 	
 	@PostMapping("/novoFuncionario")
-	public String novoFuncionario(@Valid RequisicaoNovoFuncionario requisicao, BindingResult result ) {
+	public String novoFuncionario(@Valid RequisicaoNovoFuncionario requisicao) {
 		
 		Funcionario funcionario = requisicao.toFuncionario();
 		
@@ -62,6 +66,40 @@ public class FuncionarioController {
 		return "redirect:/home/homeFuncionarios";
 	}
 	
+	@GetMapping("/atualizarFuncionario/{id}")
+	public String atualizarFuncionario(@PathVariable("id")  Long id, Model model) {
+		
+		Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
+
+		if (funcionario.isEmpty()) {
+			throw new IllegalArgumentException("Pedido inválido");
+		} else {
+			
+			model.addAttribute("funcionario", funcionario);
+		}
+		return "funcionario/formularioEditarFuncionario";
+	}
+	
+	@PostMapping("/atualizar")
+	public String recadastrar(@Valid @ModelAttribute("funcionario")RequisicaoNovoFuncionario requisicao, BindingResult result) {
+	
+
+		if(result.hasErrors()) {
+			return "funcionario/formularioEditarFuncionario.html";
+		}else {
+			Funcionario funcionario = requisicao.toFuncionario();
+			
+			Optional<Cargo> cargo = cargoRepository.findById(requisicao.getCargoId());
+	        funcionario.setCargo(cargo.get());
+	        
+	        Optional<UnidadeTrabalho> unidadeTrabalho = unidadeTrabalhoRepository.findById(requisicao.getUnidadeTrabalhoId());
+	        funcionario.setUnidadeTrabalho(unidadeTrabalho.get());
+	        
+			funcionarioRepository.save(funcionario);
+			return "redirect:/home/homeFuncionarios"	;
+		}
+		
+	}
 	
 	
 	

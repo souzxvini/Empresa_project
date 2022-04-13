@@ -27,9 +27,12 @@ public class CargoController {
 	@GetMapping("/excluirCargo/{id}")
 	public String excluirCargo(Cargo cargo ) {
 		
-			cargoRepository.deleteById(cargo.getId());
+		cargoRepository.deleteById(cargo.getId());
 		
 		return "redirect:/home/homeCargos";
+			
+		
+		
 	}
 	
 	@GetMapping("/formularioCargo")

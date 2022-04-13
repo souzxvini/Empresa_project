@@ -25,6 +25,7 @@ public class Funcionario {
 	private String cpf;
 	private BigDecimal salario;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "cargo_id", nullable = false)
 	private Cargo cargo;
@@ -33,8 +34,17 @@ public class Funcionario {
 	@JoinColumn(name = "unidade_trabalho_id")
 	private UnidadeTrabalho unidadeTrabalho;
 	
+	
+	
 	public Funcionario() {
 		
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	
 	public Long getId() {
@@ -49,12 +59,7 @@ public class Funcionario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+	
 	public BigDecimal getSalario() {
 		return salario;
 	}
