@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import br.com.souza.empresa.dao.CargoRepository;
 import br.com.souza.empresa.dao.FuncionarioRepository;
 import br.com.souza.empresa.dao.UnidadeTrabalhoRepository;
+import br.com.souza.empresa.model.Cargo;
 import br.com.souza.empresa.model.Funcionario;
 
 public class RequisicaoNovoFuncionario {
@@ -28,10 +29,9 @@ public class RequisicaoNovoFuncionario {
 	@NotNull
 	private BigDecimal salario;
 	
-		@NotNull
+	@NotNull
 	private Long cargoId;
 	
-		
 	
 	@NotNull
 	private Long unidadeTrabalhoId;

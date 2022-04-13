@@ -81,20 +81,12 @@ public class FuncionarioController {
 	}
 	
 	@PostMapping("/atualizar")
-	public String recadastrar(@Valid @ModelAttribute("funcionario")RequisicaoNovoFuncionario requisicao, BindingResult result) {
+	public String recadastrar(Funcionario funcionario, BindingResult result) {
 	
 
 		if(result.hasErrors()) {
 			return "funcionario/formularioEditarFuncionario.html";
 		}else {
-			Funcionario funcionario = requisicao.toFuncionario();
-			
-			Optional<Cargo> cargo = cargoRepository.findById(requisicao.getCargoId());
-	        funcionario.setCargo(cargo.get());
-	        
-	        Optional<UnidadeTrabalho> unidadeTrabalho = unidadeTrabalhoRepository.findById(requisicao.getUnidadeTrabalhoId());
-	        funcionario.setUnidadeTrabalho(unidadeTrabalho.get());
-	        
 			funcionarioRepository.save(funcionario);
 			return "redirect:/home/homeFuncionarios"	;
 		}

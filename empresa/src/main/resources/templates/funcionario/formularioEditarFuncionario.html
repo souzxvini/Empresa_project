@@ -34,11 +34,11 @@
 			<div th:replace="~{base :: titulo('EDITAR funcionário')}"></div>
 			
 				<div class="card">
-					<form th:object="${funcionario}" class="card-body" th:action="@{/funcionario/atualizar}"  modelAttribute="funcionario"action="#" method="post">
+					<form th:object="${funcionario}" class="card-body" th:action="@{/funcionario/atualizar}"  action="#" method="post">
 					
 						<div class="form-group">
 							<label for="id">Id:</label>
-							<input th:field="*{id}" th:errorclass="is-invalid" class="form-control mb-2" disabled />
+							<input th:field="*{id}" th:errorclass="is-invalid" class="form-control mb-2" readonly="readonly"/>
 							<div class="invalid-feedback" th:errors="*{id}"></div>
 						</div>
 						<div class="form-group">
