@@ -44,7 +44,6 @@
       					 	<th scope="col">Salario</th>
       					 	<th scope="col">Cargo</th>
       					 	<th scope="col">Unidade de Trabalho</th>
-      					 	<th scope="col">Data Contratacao</th>
     					</tr>
   					</thead>
   					<tbody>
@@ -55,22 +54,20 @@
       						<td th:text="${funcionario.salario}"></td>
       						<td th:text="${funcionario.cargo.nome}"></td>
       						<td th:text="${funcionario.unidadeTrabalho.nome}"></td>
-      						<td th:text="${funcionario.dataContratacao}"></td>
       						<td><a class="btn btn-primary" href="">EDITAR</a></td>
-      						<td><a class="btn btn-danger" >EXCLUIR</a></td>
+      						<td><a class="btn btn-danger" th:href="@{/funcionario/excluirFuncionario/{id}(id=${funcionario.id})}">EXCLUIR</a></td>
     					</tr>
-    					
   					</tbody>
   					
 				</table>
 				<div  class="row ">
 					
 					<div class="col-6 d-grid mx-auto">
-						<a class="btn btn-success text-uppercase" href="/funcionario/formularioFuncionario">adicionar</a>
+						<a class="btn btn-success text-uppercase" th:href="@{/funcionario/formularioFuncionario}">adicionar</a>
 					</div>
 					
 					<div class="col-6 d-grid mx-auto">
-						<a class="btn btn-dark text-uppercase" href="/home">voltar</a>
+						<a class="btn btn-dark text-uppercase" th:href="@{/home}">voltar</a>
 					</div>
 				</div>
 				

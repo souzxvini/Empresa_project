@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.souza.empresa.dao.UnidadeTrabalhoRepository;
 import br.com.souza.empresa.dto.RequisicaoNovaUnidadeTrabalho;
-import br.com.souza.empresa.model.Cargo;
 import br.com.souza.empresa.model.UnidadeTrabalho;
 
 @Controller
@@ -28,6 +27,7 @@ public class UnidadeTrabalhoController {
 	@GetMapping("excluirUnidadeTrabalho/{id}")
 	public String excluirUnidadetrabalho(UnidadeTrabalho unidade ) {
 			unidadeTrabalhoRepository.deleteById(unidade.getId());
+			
 		return "redirect:/home/homeUnidadesTrabalho";
 	}
 	

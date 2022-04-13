@@ -39,13 +39,15 @@ public class HomeController {
 		 
 		 return "/home/homeFuncionarios";
 	}
-
+	
 	@GetMapping("/homeCargos")
 	public String homeCargos(Model model) {
 		
 		List<Cargo> cargos = cargoRepository.findAll();
 		 model.addAttribute("cargos", cargos);
-		 
+		 if(cargos.isEmpty() || cargos.size() == 0) {
+				return "cargo/homeVaziaCargo";
+			}
 		 return "/home/homeCargos";
 	}
 	
@@ -54,7 +56,9 @@ public class HomeController {
 		
 		List<UnidadeTrabalho> unidades = unidadeTrabalhoRepository.findAll();
 		 model.addAttribute("unidades", unidades);
-		 
+		  if(unidades.isEmpty() || unidades.size() == 0) {
+			return "unidadeTrabalho/homeVaziaUnidadeTrabalho";
+		}
 		 return "/home/homeUnidadesTrabalho";
 	}
 	

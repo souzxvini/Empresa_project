@@ -56,24 +56,17 @@
 					</div>
 				</div>
 				
+				
 				<div class="form-group">
-					<label for="dataContratacao">DATA CONTRATAÇÃO:</label>
-					<input th:field="*{dataContratacao}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite a data da contratação"/>
-					<div class="invalid-feedback" th:errors="*{dataContratacao}">
-					</div>
+					<label for="cargoId">CARGO:</label>
+					<input th:field="*{cargoId}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o id do cargo"/>
+					<div class="invalid-feedback" th:errors="*{cargoId}"></div>
 				</div>
 				
 				<div class="form-group">
-					<label for="cargo.nome">CARGO:</label>
-					<input th:field="*{cargo.id}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o cargo"/>
-					<div class="invalid-feedback" th:errors="*{cargo.id}">
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label for="unidadeTrabalho">Unidade de Trabalho:</label>
-					<input th:field="*{unidadeTrabalho.id}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite a Unidade de Trabalho"/>
-					<div class="invalid-feedback" th:errors="*{unidadeTrabalho.id}">
+					<label for="unidadeTrabalhoId">Unidade de Trabalho:</label>
+					<input th:field="*{unidadeTrabalhoId}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite a Unidade de Trabalho"/>
+					<div class="invalid-feedback" th:errors="*{unidadeTrabalhoId}">
 					</div>
 				</div>
 				

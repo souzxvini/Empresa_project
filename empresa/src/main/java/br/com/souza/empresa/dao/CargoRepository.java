@@ -7,5 +7,4 @@ import br.com.souza.empresa.model.Cargo;
 
 @Repository
 public interface CargoRepository extends JpaRepository<Cargo, Long>{
-	
 }

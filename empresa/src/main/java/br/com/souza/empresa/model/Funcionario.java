@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="funcionarios")
 public class Funcionario {
@@ -22,9 +24,6 @@ public class Funcionario {
 	private String nome;
 	private String cpf;
 	private BigDecimal salario;
-	
-	@Column(name="data_contratacao")
-	private Date dataContratacao;
 	
 	@ManyToOne
 	@JoinColumn(name = "cargo_id", nullable = false)
@@ -62,12 +61,6 @@ public class Funcionario {
 	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
-	public Date getDataContratacao() {
-		return dataContratacao;
-	}
-	public void setDataContratacao(Date dataContratacao) {
-		this.dataContratacao = dataContratacao;
-	}
 	public Cargo getCargo() {
 		return cargo;
 	}
@@ -86,7 +79,7 @@ public class Funcionario {
 	@Override
 	public String toString() {
 		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario
-				+ ", dataContratacao=" + dataContratacao + ", cargo=" + cargo + ", unidadeTrabalho=" + unidadeTrabalho
+				+ ", cargo=" + cargo + ", unidadeTrabalho=" + unidadeTrabalho
 				+ "]";
 	}
 	

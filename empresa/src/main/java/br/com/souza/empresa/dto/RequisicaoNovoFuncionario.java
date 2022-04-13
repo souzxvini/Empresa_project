@@ -1,17 +1,20 @@
 package br.com.souza.empresa.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import br.com.souza.empresa.model.Cargo;
+import br.com.souza.empresa.dao.CargoRepository;
+import br.com.souza.empresa.dao.FuncionarioRepository;
+import br.com.souza.empresa.dao.UnidadeTrabalhoRepository;
 import br.com.souza.empresa.model.Funcionario;
-import br.com.souza.empresa.model.UnidadeTrabalho;
 
 public class RequisicaoNovoFuncionario {
 
+	private CargoRepository cargoRepository;
+	private FuncionarioRepository funcionarioRepository;
+	private UnidadeTrabalhoRepository unidadeTrabalhoRepository;
 	@NotBlank
 	private String nome;
 	
@@ -21,14 +24,12 @@ public class RequisicaoNovoFuncionario {
 	@NotNull
 	private BigDecimal salario;
 	
-	@NotNull
-	private Date dataContratacao;
+		@NotNull
+	private Long cargoId;
+		
 	
 	@NotNull
-	private Cargo cargo;
-	
-	@NotNull
-	private UnidadeTrabalho unidadeTrabalho;
+	private Long unidadeTrabalhoId;
 
 	public String getNome() {
 		return nome;
@@ -54,39 +55,30 @@ public class RequisicaoNovoFuncionario {
 		this.salario = salario;
 	}
 
-	public Cargo getCargo() {
-		return cargo;
+	public Long getCargoId() {
+		return cargoId;
 	}
 
-	public void setCargo(Cargo cargo) {
-		this.cargo = cargo;
+	public void setCargoId(Long cargoId) {
+		this.cargoId = cargoId;
 	}
 
-	public UnidadeTrabalho getUnidadeTrabalho() {
-		return unidadeTrabalho;
+	public Long getUnidadeTrabalhoId() {
+		return unidadeTrabalhoId;
 	}
 
-	public void setUnidadeTrabalho(UnidadeTrabalho unidadeTrabalho) {
-		this.unidadeTrabalho = unidadeTrabalho;
+	public void setUnidadeTrabalhoId(Long unidadeTrabalhoId) {
+		this.unidadeTrabalhoId = unidadeTrabalhoId;
 	}
+
 	
-	public Date getDataContratacao() {
-		return dataContratacao;
-	}
-
-	public void setDataContratacao(Date dataContratacao) {
-		this.dataContratacao = dataContratacao;
-	}
-
 	public Funcionario toFuncionario() {
 		
 		Funcionario funcionario = new Funcionario();
 		funcionario.setNome(nome);
 		funcionario.setCpf(cpf);
 		funcionario.setSalario(salario);
-		funcionario.setCargo(cargo);
-		funcionario.setUnidadeTrabalho(unidadeTrabalho);
-		funcionario.setDataContratacao(dataContratacao);
+		
 		
 		return funcionario;
 	}
