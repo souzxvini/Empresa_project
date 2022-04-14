@@ -1,0 +1,30 @@
+body{
+	font-family: sans-serif;
+}
+
+.titulo{
+	letter-spacing: 8px;
+	text-shadow: 1px 1px 40px white; 
+	font-size: 4em;
+}
+
+.opcoes-text{
+	font-size:1.8em;
+}
+
+.opcoes-link{
+	color:black;
+	text-decoration:none;
+	transition: all .5s;
+    cursor: pointer;
+}
+
+.opcoes-link:hover{
+	color: #47bcff;
+}
+
+.small-text{
+	font-size: 15px;
+}
+
+
