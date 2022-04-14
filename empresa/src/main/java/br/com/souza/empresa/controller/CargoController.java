@@ -26,13 +26,8 @@ public class CargoController {
 
 	@GetMapping("/excluirCargo/{id}")
 	public String excluirCargo(Cargo cargo ) {
-		
 		cargoRepository.deleteById(cargo.getId());
-		
 		return "redirect:/home/homeCargos";
-			
-		
-		
 	}
 	
 	@GetMapping("/formularioCargo")
@@ -42,7 +37,6 @@ public class CargoController {
 	
 	@PostMapping("/novoCargo")
 	public String novoCargo(@Valid RequisicaoNovoCargo requisicao, BindingResult result ) {
-		
 		if(result.hasErrors()){
 			return "/cargo/formularioCargo";
 		}
@@ -55,7 +49,6 @@ public class CargoController {
 	@GetMapping("/atualizarCargo/{id}")
 	public String atualizarCargo(@PathVariable("id")  Long id, Model model) {
 		Optional<Cargo> cargo = cargoRepository.findById(id);
-
 		if (cargo.isEmpty()) {
 			throw new IllegalArgumentException("Pedido inválido");
 		} else {
@@ -66,7 +59,6 @@ public class CargoController {
 	
 	@PostMapping("/atualizar")
 	public String recadastrar(Cargo cargo, BindingResult result) {
-	
 		if(result.hasErrors()) {
 			return "cargo/formularioEditarCargo.html";
 		}else {

@@ -17,8 +17,6 @@ public class RequisicaoNovoFuncionario {
 	private FuncionarioRepository funcionarioRepository;
 	private UnidadeTrabalhoRepository unidadeTrabalhoRepository;
 	
-	@NotBlank
-	private String Id;
 	
 	@NotBlank
 	private String nome;
@@ -76,15 +74,6 @@ public class RequisicaoNovoFuncionario {
 		this.unidadeTrabalhoId = unidadeTrabalhoId;
 	}
 
-	
-	
-	public String getId() {
-		return Id;
-	}
-
-	public void setId(String id) {
-		Id = id;
-	}
 
 	public Funcionario toFuncionario() {
 		

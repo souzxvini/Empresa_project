@@ -34,22 +34,22 @@
 			<div th:replace="~{base :: titulo('EDITAR funcionário')}"></div>
 			
 				<div class="card">
-					<form th:object="${funcionario}" class="card-body" th:action="@{/funcionario/atualizar}"  action="#" method="post">
+					<form th:object="${funcionario}" class="card-body text-uppercase" th:action="@{/funcionario/atualizar}"  action="#" method="post">
 					
 						<div class="form-group">
 							<label for="id">Id:</label>
-							<input th:field="*{id}" th:errorclass="is-invalid" class="form-control mb-2" readonly="readonly"/>
+							<input th:field="*{id}" th:errorclass="is-invalid" class="form-control mb-2 " readonly="readonly"/>
 							<div class="invalid-feedback" th:errors="*{id}"></div>
 						</div>
 						<div class="form-group">
 							<label for="nome">Nome:</label>
-							<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome do cargo"/>
+							<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2 text-uppercase" placeholder="nome do cargo"/>
 							<div class="invalid-feedback" th:errors="*{nome}"></div>
 						</div>
 				 
 						<div class="form-group">
 							<label for="cpf">Cpf:</label>
-							<input th:field="*{cpf}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da área"/>
+							<input th:field="*{cpf}" th:errorclass="is-invalid" class="form-control mb-2 " placeholder="nome da área"/>
 							<div class="invalid-feedback" th:errors="*{cpf}"></div>
 						</div>
 						
@@ -60,13 +60,13 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="cargo">Cargo:</label>
+							<label for="cargo">Cargo ID:</label>
 							<input th:field="*{cargo}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da área"/>
 							<div class="invalid-feedback" th:errors="*{cargo}"></div>
 						</div>
 						
 						<div class="form-group">
-							<label for="unidadeTrabalho">Unidade Trabalho:</label>
+							<label for="unidadeTrabalho">Unidade Trabalho ID:</label>
 							<input th:field="*{unidadeTrabalho}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da área"/>
 							<div class="invalid-feedback" th:errors="*{unidadeTrabalho}"></div>
 						</div>

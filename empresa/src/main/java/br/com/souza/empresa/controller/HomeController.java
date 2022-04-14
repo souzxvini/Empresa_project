@@ -46,10 +46,17 @@ public class HomeController {
 	public String homeCargos(Model model) {
 		
 		List<Cargo> cargos = cargoRepository.findAll();
-		 model.addAttribute("cargos", cargos);
+		
+		List<Funcionario> funcionarios = funcionarioRepository.findAll();
+		System.out.println(funcionarios);
+		
 		 if(cargos.isEmpty() || cargos.size() == 0) {
 				return "cargo/homeVaziaCargo";
 			}
+		 
+		 model.addAttribute("cargos", cargos);
+		 model.addAttribute("funcionarios", funcionarios);
+		 
 		 return "/home/homeCargos";
 	}
 	

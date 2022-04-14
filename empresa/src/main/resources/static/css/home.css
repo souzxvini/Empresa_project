@@ -100,4 +100,15 @@ footer {
 	background-color: blue;
 }
 
+.btn-secondary-disabled{
+	background-color: rgba(0,0,0,0.7);
+	cursor:default;
+	color:white;
+}
+
+.btn-secondary-disabled:hover{
+	background-color: rgba(0,0,0,0.7);
+	cursor:default;
+	color:white;
+}
 
