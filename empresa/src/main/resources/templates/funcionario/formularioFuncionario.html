@@ -11,18 +11,7 @@
 		 <link rel="preconnect" href="https://fonts.googleapis.com">
 		 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 			<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
-
  		<link rel="stylesheet" href="/css/home.css">
-		  <style >
-		 	.logo-container{
-		 	background-color: #47bcff;
-		 	}
-		 	
-		 	.header-text-logo{
-		 		font-family: 'Handlee', cursive;
-		 		font-size:2em ;
-		 	}
-		 </style>
 </head>
 	
 	<body >
@@ -33,44 +22,51 @@
 			
 			<div th:replace="~{base :: titulo('ADICIONAR Funcionário')}"></div>
 			
-			<div class="card">
+			<div class="card shadow p-3 mb-5 bg-body rounded" style="width:60%; margin:auto;">
 				<form th:object="${requisicaoNovoFuncionario}" class="card-body text-uppercase" action="/funcionario/novoFuncionario" method="post">
 				<div class="form-group">
-					<label for="nome">Nome do funcionário:</label>
-					<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome "/>
+					<label class="form-label" for="nome">Nome do funcionário:</label>
+					<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o nome " required autocomplete="off"  onkeypress="return lettersOnly(event);"/>
 					<div class="invalid-feedback" th:errors="*{nome}">
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label for="cpf">CPF:</label>
-					<input th:field="*{cpf}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o cpf"/>
-					<div class="invalid-feedback" th:errors="*{cpf}">
-					</div>
+					<label class="form-label" for="cpf">CPF: </label>
+					<input th:field="*{cpf}" class=" form-control mb-2" 
+					 placeholder="Digite o cpf " minlength="11" maxlength="11" required autocomplete="off" onkeypress="return onlynumber();"/>
 				</div>
 				
 				<div class="form-group">
-					<label for="salario">Salário:</label>
-					<input th:field="*{salario}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o salário"/>
-					<div class="invalid-feedback" th:errors="*{salario}">
+					<label class="form-label" for="salario">Salário:</label>
+					<input th:field="*{salario}"  class="form-control mb-2" placeholder="Digite o salário" required autocomplete="off" onkeypress="return onlynumber();"/>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-6 ">
+						<label class="form-label" for="cargoId">CARGO:</label>
+						<select name="cargoId" class="form-select " required autocomplete="off">
+<!-- 						th:value é o que vai ser inserido -->
+							<option value="" disabled selected>Selecione...</option>
+							<option th:each="cargo : ${cargos}" th:value="${cargo.id}" th:text="${cargo.nome}" th:field="*{cargoId}" th:errorclass="is-invalid" ></option>
+						</select>
+						<div class="invalid-feedback" th:errors="*{cargoId}">
+					</div>
+					</div>
+					
+					<div class="col-6 ">
+						<label class="form-label" for="unidadeTrabalhoId">Unidade de Trabalho:</label>
+						<select name="unidadeTrabalhoId" class="form-select" required>
+<!-- 						th:value é o que vai ser inserido -->
+						<option value="" disabled selected>Selecione...</option>
+						<option th:each="unidadeTrabalho : ${unidadesTrabalho}" th:value="${unidadeTrabalho.id}" th:text="${unidadeTrabalho.nome}" ></option>
+						</select>
 					</div>
 				</div>
 				
-				
-				<div class="form-group">
-					<label for="cargoId">CARGO:</label>
-					<input th:field="*{cargoId}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o id do cargo"/>
-					<div class="invalid-feedback" th:errors="*{cargoId}"></div>
+				<div class="form-group row">
+					
 				</div>
-				
-				<div class="form-group">
-					<label for="unidadeTrabalhoId">Unidade de Trabalho:</label>
-					<input th:field="*{unidadeTrabalhoId}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite a Unidade de Trabalho"/>
-					<div class="invalid-feedback" th:errors="*{unidadeTrabalhoId}">
-					</div>
-				</div>
-				
-				
 					<div class="row mt-2">
 							<div class="col-6 d-grid  mx-auto ">
 								<input class=" btn btn-success text-uppercase" type="submit"/>
@@ -83,5 +79,30 @@
 				</form>
 			</div>
 		</div>
+		<div th:replace="~{base :: footer}"></div>
+		<script>
+		function onlynumber(evt) {
+			   var theEvent = evt || window.event;
+			   var key = theEvent.keyCode || theEvent.which;
+			   key = String.fromCharCode( key );
+			   //var regex = /^[0-9.,]+$/;
+			   var regex = /^[0-9.]+$/;
+			   if( !regex.test(key) ) {
+			      theEvent.returnValue = false;
+			      if(theEvent.preventDefault) theEvent.preventDefault();
+			   }
+			}
+		
+		function lettersOnly(evt) {
+		    evt = (evt) ? evt : event;
+		    var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+		        ((evt.which) ? evt.which : 0));
+		    if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+		        (charCode < 97 || charCode > 122)) {
+		        return false;
+		    }
+		    return true;
+		}
+		</script>
 	</body>
 </html>

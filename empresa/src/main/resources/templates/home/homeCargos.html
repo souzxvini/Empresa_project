@@ -13,16 +13,8 @@
 			<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
 
  		<link rel="stylesheet" href="/css/home.css">
-		  <style >
-		 	.logo-container{
-		 	background-color: #47bcff;
-		 	}
-		 	
-		 	.header-text-logo{
-		 		font-family: 'Handlee', cursive;
-		 		font-size:2em ;
-		 	}
-		 </style>
+		  
+		  
 </head>
 	
 	<body >
@@ -39,24 +31,23 @@
    					 	<tr >
      						<th scope="col">ID</th>
       					 	<th scope="col">CARGO</th>
-      					 	<th scope="col">AREA</th>
+      					 	<th scope="col">ÁREA</th>
       					 	
     					</tr>
   					</thead>
   					<tbody>
-    					<tr th:each="cargo : ${cargos}">
+  					
+    					<tr th:each="cargo : ${cargos}" >
       						<td th:text="${cargo.id}"></td>
       						<td th:text="${cargo.nome}"></td>
       						<td th:text="${cargo.area}"></td>
       						<td><a class="btn btn-primary"th:href="@{/cargo/atualizarCargo/{id}(id=${cargo.id})}">EDITAR</a></td>
-      						<div th:each="funcionario : ${funcionarios}">
-      							<td th:if="${funcionario.cargo.id == cargo.id} "><a class="btn btn-secondary-disabled"  >EXCLUIR</a></td>
-      							<td th:unless="${funcionario.cargo.id == cargo.id} "><a class="btn btn-danger" th:href="@{/cargo/excluirCargo/{id}(id=${cargo.id})}" >EXCLUIR</a></td>
-      						</div>
-      						
-      						
-      						
-      						
+<!--       					
+      								<div th:each="funcionario : ${funcionarios}">
+<!--       							<td th:if="${funcionario.cargo.id == cargo.id} "><a class="btn btn-secondary-disabled"  >EXCLUIR</a></td> -->
+<!-- 								<td th:unless="${funcionario.cargo.id == cargo.id} "><a class="btn btn-danger" th:href="@{/cargo/excluirCargo/{id}(id=${cargo.id})}" >EXCLUIR</a></td> -->
+<!-- 							</div>  -->
+      							<td><a class="btn btn-danger" th:href="@{/cargo/excluirCargo/{id}(id=${cargo.id})}" >EXCLUIR</a></td>    						   						
     					</tr>
     					
   					</tbody>

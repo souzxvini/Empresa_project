@@ -2,10 +2,20 @@ body{
 	font-family: sans-serif;
 }
 
+.logo-container{
+	background-color: rgba(0,0,0,0.9);
+}
+		 	
+.header-text-logo{
+		 		font-family: 'Handlee', cursive;
+		 		font-size:2em ;
+		 	}
+
 .titulo{
 	letter-spacing: 8px;
 	text-shadow: 1px 1px 40px white; 
 	font-size: 4em;
+	
 }
 
 .opcoes-text{
@@ -36,17 +46,17 @@ body {
 
 footer {
    	 margin-top: auto;
- 	 background-color:#47bcff ;
+ 	 background-color:rgba(0,0,0,0.9) ;
 }
     	
 .text-footer{
     letter-spacing: 7px;
     text-decoration: none;
-    color: black;
+    color: white;
  }
     	
 .text-footer-nome{
-    color: black;
+    color: white;
     letter-spacing: 7px;
     text-decoration: none;
     border-bottom: 1px dotted;
@@ -54,11 +64,10 @@ footer {
 }
     	
 .text-footer-nome:hover{
- 	color:white;
+ 	color:rgb(0, 255, 255);
     letter-spacing: 7px;
     text-decoration: none;
     border-bottom: 1px dotted;
-    		
 }
 
 .btn-dark{
@@ -68,7 +77,6 @@ footer {
 
 .btn-dark:hover{
 	background-color: black;
-	
 }
 
 .btn-success{
@@ -78,7 +86,6 @@ footer {
 
 .btn-success:hover{
 	background-color: #228B22;
-	
 }
 
 .btn-danger{
@@ -88,7 +95,6 @@ footer {
 
 .btn-danger:hover{
 	background-color: red;
-	
 }
 
 .btn-primary{
@@ -112,3 +118,16 @@ footer {
 	color:white;
 }
 
+.button-home{
+	font-family: "Work Sans", sans-serif;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+	
+	background: #FFFFFF;
+	border: none;
+	border-radius: .4em;
+}
+
+h1{
+	
+}

@@ -13,25 +13,16 @@
 			<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
 
  		<link rel="stylesheet" href="/css/home.css">
-		  <style >
-		 	.logo-container{
-		 	background-color: #47bcff;
-		 	}
-		 	
-		 	.header-text-logo{
-		 		font-family: 'Handlee', cursive;
-		 		font-size:2em ;
-		 	}
-		 </style>
 </head>
 	
 	<body >
 		
 		<div th:replace="~{base :: logo}"></div>
 		
-		<div class="container">
+		<div class="container" >
 			
 			<div th:replace="~{base :: titulo('Selecione uma opção')}"></div>
+			
 			
 			<div class="card " style="width: 60%; margin:auto;" >
   				<ul class="list-group list-group-flush list-group-numbered text-uppercase p-3  opcoes-text">

@@ -70,5 +70,15 @@ public class HomeController {
 		}
 		 return "/home/homeUnidadesTrabalho";
 	}
-	
+//	public boolean isVazio(Long id) {
+//		
+//			List<Funcionario> funcionarios = funcionarioRepository.findByCargoId(id);
+//			
+//			if(funcionarios.size() == 0 || funcionarios == null) {
+//				return true;
+//			}else {
+//				return false;
+//			}
+//			
+//		}
 }

@@ -1,5 +1,6 @@
 package br.com.souza.empresa.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -45,8 +46,11 @@ public class FuncionarioController {
 	
 	@GetMapping("/formularioFuncionario")
 	public String formularioFuncionario(RequisicaoNovoFuncionario requisicao, Model model) {
-		
+		List<Cargo> cargos = cargoRepository.findAll();
+		List<UnidadeTrabalho> unidadesTrabalho = unidadeTrabalhoRepository.findAll();
 		Cargo cargo = new Cargo();
+		model.addAttribute("unidadesTrabalho", unidadesTrabalho);
+		model.addAttribute("cargos", cargos);
 	    model.addAttribute("cargo", cargo);
 		
 		return "funcionario/formularioFuncionario";
@@ -69,12 +73,15 @@ public class FuncionarioController {
 	@GetMapping("/atualizarFuncionario/{id}")
 	public String atualizarFuncionario(@PathVariable("id")  Long id, Model model) {
 		
+		List<Cargo> cargos = cargoRepository.findAll();
 		Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
+		List<UnidadeTrabalho> unidadesTrabalho = unidadeTrabalhoRepository.findAll();
 
 		if (funcionario.isEmpty()) {
 			throw new IllegalArgumentException("Pedido inválido");
 		} else {
-			
+			model.addAttribute("unidadesTrabalho", unidadesTrabalho);
+			model.addAttribute("cargos", cargos);
 			model.addAttribute("funcionario", funcionario);
 		}
 		return "funcionario/formularioEditarFuncionario";

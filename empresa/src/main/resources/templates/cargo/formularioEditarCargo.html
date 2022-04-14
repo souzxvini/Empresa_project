@@ -13,16 +13,7 @@
 			<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
 
  		<link rel="stylesheet" href="/css/home.css">
-		  <style >
-		 	.logo-container{
-		 	background-color: #47bcff;
-		 	}
-		 	
-		 	.header-text-logo{
-		 		font-family: 'Handlee', cursive;
-		 		font-size:2em ;
-		 	}
-		 </style>
+		  
 </head>
 	
 	<body >
@@ -43,13 +34,13 @@
 						</div>
 						<div class="form-group">
 							<label for="nome">Cargo</label>
-							<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome do cargo"/>
+							<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome do cargo" autocomplete="off" />
 							<div class="invalid-feedback" th:errors="*{nome}"></div>
 						</div>
 				 
 						<div class="form-group">
 							<label for="area">Área</label>
-							<input th:field="*{area}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da área"/>
+							<input th:field="*{area}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="nome da área" autocomplete="off" />
 							<div class="invalid-feedback" th:errors="*{area}"></div>
 						</div>
 					
@@ -59,12 +50,12 @@
 							</div>
 						
 							<div class="col-6 d-grid mx-auto">
-								<a class="btn btn-secondary text-uppercase" href="/home/homeCargos">VOLTAR</a>
+								<a class="btn btn-dark text-uppercase" href="/home/homeCargos">VOLTAR</a>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>
+		<div th:replace="~{base :: footer}"></div>
 	</body>
 </html>
