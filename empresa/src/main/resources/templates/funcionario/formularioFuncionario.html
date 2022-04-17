@@ -1,0 +1,108 @@
+<html>
+	<head>
+	<meta charset="UTF-8"/>
+		
+		<link href=
+		"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+		 rel="stylesheet" 
+		 integrity=
+		 "sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+		 crossorigin="anonymous">
+		 <link rel="preconnect" href="https://fonts.googleapis.com">
+		 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+ 		<link rel="stylesheet" href="/css/home.css">
+</head>
+	
+	<body >
+		
+		<div th:replace="~{base :: logo}"></div>
+		
+		<div class="container">
+			
+			<div th:replace="~{base :: titulo('ADICIONAR Funcionário')}"></div>
+			
+			<div class="card shadow p-3 mb-5 bg-body rounded" style="width:60%; margin:auto;">
+				<form th:object="${requisicaoNovoFuncionario}" class="card-body text-uppercase" action="/funcionario/novoFuncionario" method="post">
+				<div class="form-group">
+					<label class="form-label" for="nome">Nome do funcionário:</label>
+					<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control mb-2" placeholder="Digite o nome " required autocomplete="off"  onkeypress="return lettersOnly(event);"/>
+					<div class="invalid-feedback" th:errors="*{nome}">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="form-label" for="cpf">CPF: </label>
+					<input th:field="*{cpf}" class=" form-control mb-2" 
+					 placeholder="Digite o cpf " minlength="11" maxlength="11" required autocomplete="off" onkeypress="return onlynumber();"/>
+				</div>
+				
+				<div class="form-group">
+					<label class="form-label" for="salario">Salário:</label>
+					<input th:field="*{salario}"  class="form-control mb-2" placeholder="Digite o salário" required autocomplete="off" onkeypress="return onlynumber();"/>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-6 ">
+						<label class="form-label" for="cargoId">CARGO:</label>
+						<select name="cargoId" class="form-select " required autocomplete="off">
+<!-- 						th:value é o que vai ser inserido -->
+							<option value="" disabled selected>Selecione...</option>
+							<option th:each="cargo : ${cargos}" th:value="${cargo.id}" th:text="${cargo.nome}" th:field="*{cargoId}" th:errorclass="is-invalid" ></option>
+						</select>
+						<div class="invalid-feedback" th:errors="*{cargoId}">
+					</div>
+					</div>
+					
+					<div class="col-6 ">
+						<label class="form-label" for="unidadeTrabalhoId">Unidade de Trabalho:</label>
+						<select name="unidadeTrabalhoId" class="form-select" required>
+<!-- 						th:value é o que vai ser inserido -->
+						<option value="" disabled selected>Selecione...</option>
+						<option th:each="unidadeTrabalho : ${unidadesTrabalho}" th:value="${unidadeTrabalho.id}" th:text="${unidadeTrabalho.nome}" ></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					
+				</div>
+					<div class="row mt-2">
+							<div class="col-6 d-grid  mx-auto ">
+								<input class=" btn btn-success text-uppercase" type="submit"/>
+							</div>
+								
+							<div class="col-6 d-grid mx-auto">
+								<a class="btn btn-dark text-uppercase" href="/home/homeFuncionarios">VOLTAR</a>
+							</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div th:replace="~{base :: footer}"></div>
+		<script>
+		function onlynumber(evt) {
+			   var theEvent = evt || window.event;
+			   var key = theEvent.keyCode || theEvent.which;
+			   key = String.fromCharCode( key );
+			   //var regex = /^[0-9.,]+$/;
+			   var regex = /^[0-9.]+$/;
+			   if( !regex.test(key) ) {
+			      theEvent.returnValue = false;
+			      if(theEvent.preventDefault) theEvent.preventDefault();
+			   }
+			}
+		
+		function lettersOnly(evt) {
+		    evt = (evt) ? evt : event;
+		    var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+		        ((evt.which) ? evt.which : 0));
+		    if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+		        (charCode < 97 || charCode > 122)) {
+		        return false;
+		    }
+		    return true;
+		}
+		</script>
+	</body>
+</html>
